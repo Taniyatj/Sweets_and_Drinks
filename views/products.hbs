@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <title>Sweets&Drinks</title>
+</head>
+  
+<body>
+    <h1>Produkte hochladen</h1>
+    <hr>
+    <div>
+        <form action="/products" method="POST">
+            <div>
+                <label for="productn">Produktname</label>
+                <input type="text" id="productn" placeholder="Name" 
+                       value="" name="name" required>
+            </div>
+            <div>
+                <label for="pdescr">Image Description</label>
+                <textarea id="pdescr" name="desc" value="" rows="2" 
+                          placeholder="Description">
+                </textarea>
+            </div>
+            <div>
+                <label for="productimg">Bild</label>
+                <input type="file" id="productimg" 
+                       name="image" value="" required>
+            </div>
+            <div>
+                <label for="anzahl">Anzahl</label>
+                <input type="number" id="anzahl" 
+                       name="anzahl" value="" required>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+  
+    <hr>
+  
+    <h1>Uploaded Images</h1>
+    <div>
+        <% items.forEach(function(image) { %>
+        <div>
+            <div>
+                <img src="data:image/<%=image.img.contentType%>;base64,
+                     <%=image.img.data.toString('base64')%>">
+                <div>
+                    <h5><%= image.name %></h5>
+                      
+  
+  
+<p><%= image.desc %></p>
+  
+  
+  
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+  
+</html>
